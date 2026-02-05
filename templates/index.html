@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% import "macros.html" as macros %}
+
+<link rel="stylesheet" href="static/bootstrap/css/csspropio.css">
+<div class="container text-center mt-3">
+    <div class="header-titulo">Cinepolis</div>
+</div>
+
+<div class="container">
+    <form action="/cinepolis" method="POST" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="row">
+            <div class="col-md-7">
+                <div class="caja-marco">
+                    <span class="caja-titulo">Entradas</span>
+                    
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            {{ macros.formNuevo(form.nombre, class="form-control form-control-sm") }}
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            {{ macros.formNuevo(form.nCompradores, class="form-control form-control-sm") }}
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            {{ macros.formNuevo(form.tCineco) }}
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            {{ macros.formNuevo(form.nBoletos, class="form-control form-control-sm") }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="caja-marco" style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                    <span class="caja-titulo">Salidas</span>
+                    
+                    <div class="w-100 px-3">
+                        <label class="form-label">Valor a Pagar</label>
+                        <input type="text" class="form-control" value="${{ valor if valor else 0 }}" readonly style="background-color: white; font-weight: bold;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-6">
+                <div class="caja-marco text-center pb-4">
+                    <span class="caja-titulo">Acciones</span>
+                    
+                    <button type="submit" class="btn btn-light px-4 me-3 fw-bold">Procesar</button>
+                    <a href="/cinepolis" class="btn btn-light px-4 fw-bold">Salir</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show mt-3" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+body {
+        background-color: #264690; 
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+    
+    .caja-marco {
+        border: 2px solid white;
+        padding: 20px;
+        position: relative;
+        margin-bottom: 25px;
+        border-radius: 5px;
+    }
+
+    .caja-titulo {
+        position: absolute;
+        top: -14px;
+        left: 15px;
+        background-color: #264690;
+        padding: 0 10px;
+        font-weight: bold;
+        font-style: italic;
+        color: white;
+        font-size: 1.1rem;
+    }
+
+    .form-label, td {
+        font-weight: bold;
+        color: white; /* Texto blanco */
+    }
+    
+    .form-control {
+        border-radius: 0;
+    }
+
+    .logo-cinepolis {
+        display: block;
+        margin: 0 auto;
+        max-width: 300px; /* Ajusta según tu imagen */
+    }
+
+    .header-titulo {
+        background-color: white;
+        color: black;
+        display: inline-block;
+        padding: 5px 20px;
+        font-weight: bold;
+        font-size: 1.5rem;
+        font-style: italic;
+        margin-bottom: 20px;
+    }
